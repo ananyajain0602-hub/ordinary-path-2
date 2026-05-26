@@ -114,32 +114,16 @@ function playBowl(){try{const c=new(window.AudioContext||window.webkitAudioConte
 const todayKey=()=>new Date().toISOString().split("T")[0];
 
 async function saveSection(sec,data){
-  try{await window.storage.set(`log:${todayKey()}:${sec}`,JSON.stringify({...data,date:todayKey()}));}catch(e){}
+  try{localStorage.setItem(`log:${todayKey()}:${sec}`,JSON.stringify({...data,date:todayKey()}));}catch(e){}
 }
 async function loadSection(sec){
-  try{const r=await window.storage.get(`log:${todayKey()}:${sec}`);return r?JSON.parse(r.value):null;}catch(e){return null;}
+  try{const r=localStorage.getItem(`log:${todayKey()}:${sec}`);return r?JSON.parse(r):null;}catch(e){return null;}
 }
 async function appendSession(type,data){
-  try{
-    const key=`sess:${todayKey()}:${type}`;let ex=[];
-    try{const r=await window.storage.get(key);if(r)ex=JSON.parse(r.value);}catch(e){}
-    ex.push({...data,time:new Date().toISOString()});
-    await window.storage.set(key,JSON.stringify(ex));
-  }catch(e){}
+  try{const key=`sess:${todayKey()}:${type}`;let ex=[];try{const r=localStorage.getItem(key);if(r)ex=JSON.parse(r);}catch(e){}ex.push({...data,time:new Date().toISOString()});localStorage.setItem(key,JSON.stringify(ex));}catch(e){}
 }
 async function loadAllDays(){
-  try{
-    const k=await window.storage.list("log:");
-    const k2=await window.storage.list("sess:");
-    const days={};
-    for(const key of(k.keys||[])){
-      try{const p=key.split(":"),d=p[1],s=p[2];if(!days[d])days[d]={};const r=await window.storage.get(key);if(r)days[d][s]=JSON.parse(r.value);}catch(e){}
-    }
-    for(const key of(k2.keys||[])){
-      try{const p=key.split(":"),d=p[1],t=p[2];if(!days[d])days[d]={};if(!days[d].sessions)days[d].sessions={};const r=await window.storage.get(key);if(r)days[d].sessions[t]=JSON.parse(r.value);}catch(e){}
-    }
-    return days;
-  }catch(e){return{};}
+  try{const days={};for(let i=0;i<localStorage.length;i++){const key=localStorage.key(i);if(!key)continue;try{const p=key.split(":"),type=p[0],d=p[1],s=p[2];if(!days[d])days[d]={};if(type==="log")days[d][s]=JSON.parse(localStorage.getItem(key));if(type==="sess"){if(!days[d].sessions)days[d].sessions={};days[d].sessions[s]=JSON.parse(localStorage.getItem(key));}}catch(e){}}return days;}catch(e){return{};}
 }
 
 const CSS=`
