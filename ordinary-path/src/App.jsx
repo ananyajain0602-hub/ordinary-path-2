@@ -250,7 +250,7 @@ export default function App(){
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
-          model:"claude-sonnet-4-20250514",
+          model:"claude-sonnet-4-5",
           max_tokens:800,
           system:"You are a warm Dhamma guide grounded in the Pali suttas. Respond in 2-4 sentences like a gentle experienced teacher. Reference Pali terms naturally. Never be preachy.",
           messages:[{role:"user",content:p}]
