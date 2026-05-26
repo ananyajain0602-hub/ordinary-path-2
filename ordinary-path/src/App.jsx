@@ -174,6 +174,26 @@ body{background:#fdf6e3}
 .ib{background:none;border:none;cursor:pointer;font-size:19px;padding:4px;line-height:1}
 `;
 
+const REPO_TITLES={
+  sila:"Sīla — The Foundation",
+  akusala:"The 10 Akusala — Seeing Them Clearly",
+  kusala:"The 10 Kusala — Wholesome Deeds",
+  hindrances:"The Five Hindrances — Removal of Each",
+  metta:"Mettā | Loving-Kindness — Antidote to Byāpāda",
+  karuna:"Karuṇā | Compassion — Antidote to Byāpāda",
+  abhijja:"Abhijjhā — Investigation and Removal",
+  mn20:"Removing Unwholesome Thoughts (MN 20)",
+  noble:"The Four Noble Truths — Investigative Framework",
+  walking:"Walking Meditation",
+  indriya:"Indriyasaṃvara — Sense Restraint",
+  satipatthana:"Satipatthāna — The Four Foundations",
+  anapanasati:"Ānāpānasati — Breath as Anchor",
+  jjvm:"Jāti Jarā Vyādhi Maraṇa (AN 5.57)",
+  mn13:"The Beauty That Fades — Releasing Attachment to Forms (MN 13)",
+  bahiya:"From Contact to Liberation — Breaking the Cycle at its Root",
+  carana:"15 Caraṇa Dhamma (MN 53)",
+};
+
 const TABS=[{id:"morning",label:"Morning"},{id:"journey",label:"Journey"},{id:"breath",label:"Breath"},{id:"sila",label:"Sīla"},{id:"evening",label:"Evening"},{id:"insight",label:"Insight"}];
 
 export default function App(){
@@ -182,6 +202,7 @@ export default function App(){
   const [showMenu,setShowMenu]=useState(false);
   const [mv,setMv]=useState("main");
   const [allDays,setAllDays]=useState({}); 
+  const [selDay,setSelDay]=useState(null); 
   const [repoId,setRepoId]=useState(null);
   const [guided,setGuided]=useState(null);
   const [gStep,setGStep]=useState(0);
@@ -409,6 +430,7 @@ export default function App(){
               <span style={{fontSize:"13px",color:"#4a3a1a",fontStyle:"italic"}}>Abhijjhā — covetousness</span>
             </div>
             {abh&&<textarea className="ta" rows={3} style={{marginBottom:9}} placeholder="Where did it arise? What triggered it?" value={abhN} onChange={e=>setAbhN(e.target.value)}/>}
+           {(abh||bya)&&<div style={{margin:"6px 0 10px"}}><span style={{fontSize:"13px",color:"#8a7a5a",fontStyle:"italic"}}>Having seen this arise: </span><button className="btn lnk" onClick={()=>{setShowMenu(true);setRepoId("mn20");setMv("repo_item");}}>explore Removing Unwholesome Thoughts (MN 20) ›</button></div>}
             <p className="st">Did byāpāda arise today?</p>
             <div style={{display:"flex",gap:8,marginBottom:7,alignItems:"center"}}>
               <div className={`chk sq${bya?" ar":""}`} onClick={()=>setBya(v=>!v)}>{bya&&"✕"}</div>
@@ -445,6 +467,9 @@ export default function App(){
             {[["Jāti","I too am subject to birth.","#e8f0d8","#4a6a2a"],["Jarā","I too am subject to ageing.","#f0e8d8","#6a4a2a"],["Vyādhi","I too am subject to sickness.","#e8d8e8","#5a3a5a"],["Maraṇa","I too am subject to death.","#e8e0d0","#5a4a3a"]].map(([n,t,bg,col])=>(
               <div key={n} style={{background:bg,borderRadius:8,padding:"9px 11px",marginBottom:7}}><p style={{fontSize:"13px",fontWeight:500,color:col,marginBottom:2}}>{n}</p><p style={{fontSize:"13px",color:col,fontStyle:"italic",lineHeight:1.6}}>{t}</p></div>
             ))}
+            <div style={{marginTop:14,padding:"10px 0",borderTop:"1px solid #e8ddb8",textAlign:"center"}}>
+            <p style={{fontSize:"12px",color:"#9a7d3a",fontStyle:"italic"}}>Explore further at <a href="https://depth-of-dhamma.net" target="_blank" rel="noopener noreferrer" style={{color:"#b8860b",borderBottom:"1px dotted #d4b86a"}}>depth-of-dhamma.net ↗</a></p>
+          </div>
           </div>}
 
         </div>
@@ -470,8 +495,8 @@ export default function App(){
       {showMenu&&<div className="ov" onClick={closeMenu}><div className="mod" onClick={e=>e.stopPropagation()}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
           <div style={{display:"flex",alignItems:"center",gap:8}}>
-            {mv!=="main"&&<button className="ib" style={{fontSize:"16px"}} onClick={()=>{if(mv==="guided"){setMv("repo_item");}else if(mv==="repo_item"){setMv("repo");}else setMv("main");}}>←</button>}
-            <p style={{fontSize:"15px",color:"#b8860b",fontWeight:500}}>{mv==="main"?"Menu":mv==="chant"?"Daily Chant":mv==="repo"?"Knowledge Repository":mv==="guided"?"Guided Practice":mv==="repo_item"&&repoId?REPO_DATA[repoId]?.title||"Teaching":"Practice Log"}</p>
+            {mv!=="main"&&<button className="ib" style={{fontSize:"16px"}} onClick={()=>{if(mv==="guided"){setMv("repo_item");}else if(mv==="repo_item"){setMv("repo");}else if(mv==="logday"){setMv("log");}else setMv("main");}}>←</button>}
+            <p style={{fontSize:"15px",color:"#b8860b",fontWeight:500}}>{mv==="main"?"Menu":mv==="chant"?"Daily Chant":mv==="repo"?"Knowledge Repository":mv==="guided"?"Guided Practice":mv==="logday"?selDay?.key||"Log Entry":mv==="repo_item"&&repoId?REPO_TITLES[repoId]||REPO_DATA[repoId]?.title||"Teaching":"Practice Log"}</p>
           </div>
           <button className="ib" onClick={closeMenu}>✕</button>
         </div>
@@ -490,9 +515,9 @@ export default function App(){
        {mv==="repo"&&<>
           <p style={{fontSize:"12px",color:"#8a7a5a",fontStyle:"italic",marginBottom:10}}>Tap any topic to read the teaching.</p>
           {Object.entries(REPO_DATA).map(([id,item])=><div key={id} style={{background:"#fffdf5",border:"1px solid #e0c97a",borderRadius:10,padding:"11px 13px",marginBottom:8,cursor:"pointer"}} onClick={()=>{setRepoId(id);setMv("repo_item");}}>
-          <p style={{fontSize:"14px",color:"#b8860b",fontWeight:500}}>{item.title||id}</p>
+          <p style={{fontSize:"14px",color:"#b8860b",fontWeight:500}}>{REPO_TITLES[id]||item.title||id}</p>
           <p style={{fontSize:"12px",color:"#9a7d3a",marginTop:2}}>{item.sutta||""}</p>
-        </div>)}
+          </div>)}
         </>}
        {mv==="repo_item"&&repoId&&REPO_DATA[repoId]&&<>
           <p style={{fontSize:"12px",color:"#9a7d3a",marginBottom:8}}>{REPO_DATA[repoId].sutta}</p>
@@ -509,12 +534,22 @@ export default function App(){
           ?<button className="btn pri" onClick={()=>{playBowl();setGStep(s=>s+1);}}>I have done this ›</button>
           :<><div className="ibox">Notice the quality of the mind. This turning toward — however small — is the path itself.</div><button className="btn pri" style={{marginTop:8}} onClick={doneGuided}>Complete practice ✓</button></>}
         </>}
-        {mv==="log"&&<>
-          {(()=>{const s=wkStats();return(<><p className="st">This week</p><div className="card">{[["Breath watched",s.bm>0?`${s.bm} min`:"none yet"],["Sīla avg",s.sk!==null?`${s.sk}/5`:"—"],["Abhijjhā arose",`${s.ac} days`],["Byāpāda arose",`${s.bc} days`]].map(([l,v])=><div className="strow" key={l}><span>{l}</span><span className="sv">{v}</span></div>)}</div></>);})()}
-          <p className="st" style={{marginTop:12}}>Calendar</p>
-          {(()=>{const yr=calMo.getFullYear(),mo=calMo.getMonth(),fd=new Date(yr,mo,1).getDay(),dim=new Date(yr,mo+1,0).getDate(),ts=todayKey(),mns=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];const cells=[];for(let i=0;i<fd;i++)cells.push(<div key={`e${i}`}/>);for(let d=1;d<=dim;d++){const k=`${yr}-${String(mo+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;cells.push(<div key={k} className={`cday${allDays[k]?" hd":""}${k===ts?" td":""}`}>{d}</div>);}
-          return(<><div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}><button className="btn sm" style={{width:"auto"}} onClick={()=>setCalMo(m=>{const n=new Date(m);n.setMonth(n.getMonth()-1);return n;})}>‹</button><p style={{fontSize:"14px",color:"#b8860b",fontWeight:500}}>{mns[mo]} {yr}</p><button className="btn sm" style={{width:"auto"}} onClick={()=>setCalMo(m=>{const n=new Date(m);n.setMonth(n.getMonth()+1);return n;})}>›</button></div><div style={{display:"grid",gridTemplateColumns:"repeat(7,1fr)",gap:2,marginBottom:4}}>{["S","M","T","W","T","F","S"].map((d,i)=><div key={i} style={{textAlign:"center",fontSize:"11px",color:"#9a7d3a"}}>{d}</div>)}</div><div className="cgrid">{cells}</div></>);})()}
-        </>}
+       {mv==="log"&&<>
+  {(()=>{const s=wkStats();return(<><p className="st">This week</p><div className="card">{[["Breath watched",s.bm>0?`${s.bm} min`:"none yet"],["Sīla avg",s.sk!==null?`${s.sk}/5`:"—"],["Abhijjhā arose",`${s.ac} days`],["Byāpāda arose",`${s.bc} days`]].map(([l,v])=><div className="strow" key={l}><span>{l}</span><span className="sv">{v}</span></div>)}</div></>);})()}
+  <p className="st" style={{marginTop:12}}>Calendar — tap a highlighted date</p>
+  {(()=>{const yr=calMo.getFullYear(),mo=calMo.getMonth(),fd=new Date(yr,mo,1).getDay(),dim=new Date(yr,mo+1,0).getDate(),ts=todayKey(),mns=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];const cells=[];for(let i=0;i<fd;i++)cells.push(<div key={`e${i}`}/>);for(let d=1;d<=dim;d++){const k=`${yr}-${String(mo+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;cells.push(<div key={k} className={`cday${allDays[k]?" hd":""}${k===ts?" td":""}`} style={{cursor:allDays[k]?"pointer":"default"}} onClick={()=>{if(allDays[k]){setSelDay({key:k,data:allDays[k]});setMv("logday");}}}>{d}</div>);}
+  return(<><div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}><button className="btn sm" style={{width:"auto"}} onClick={()=>setCalMo(m=>{const n=new Date(m);n.setMonth(n.getMonth()-1);return n;})}>‹</button><p style={{fontSize:"14px",color:"#b8860b",fontWeight:500}}>{mns[mo]} {yr}</p><button className="btn sm" style={{width:"auto"}} onClick={()=>setCalMo(m=>{const n=new Date(m);n.setMonth(n.getMonth()+1);return n;})}>›</button></div><div style={{display:"grid",gridTemplateColumns:"repeat(7,1fr)",gap:2,marginBottom:4}}>{["S","M","T","W","T","F","S"].map((d,i)=><div key={i} style={{textAlign:"center",fontSize:"11px",color:"#9a7d3a"}}>{d}</div>)}</div><div className="cgrid">{cells}</div></>);})()}
+</>}
+{mv==="logday"&&selDay&&(()=>{const{key,data:d}=selDay;return(<>
+  <p style={{fontSize:"15px",color:"#b8860b",fontWeight:500,marginBottom:10}}>{key}</p>
+  {d.morning&&<><p className="st">Intention</p><p style={{fontSize:"14px",color:"#4a3a1a",lineHeight:1.7,marginBottom:6,fontStyle:"italic"}}>{d.morning.intention||"—"}</p>
+  {d.morning.tasks&&d.morning.tasks.filter(t=>t.t).length>0&&<><p className="st">Tasks</p>{d.morning.tasks.filter(t=>t.t).map((t,i)=><div key={i} style={{marginBottom:6}}><p style={{fontSize:"13px",color:"#4a3a1a"}}>{t.t}</p>{t.i&&<p style={{fontSize:"12px",color:"#8a7a5a",fontStyle:"italic"}}>{t.i}</p>}</div>)}</>}</>}
+  {d.sila&&<><p className="st">Sīla</p><div className="card">{SILA5.map((s,i)=><div key={i} style={{marginBottom:5}}><span style={{fontSize:"12px",color:"#4a3a1a"}}>{s.pali.split("·")[0].trim()}: </span><span style={{fontSize:"12px",color:d.sila.silaS?.[i]==="k"?"#4a6a2a":d.sila.silaS?.[i]==="m"?"#c4604a":"#9a7d3a",fontWeight:500}}>{d.sila.silaS?.[i]==="k"?"kept":d.sila.silaS?.[i]==="m"?"missed":"unlogged"}</span>{d.sila.silaN?.[i]&&<p style={{fontSize:"12px",color:"#8a7a5a",fontStyle:"italic",marginTop:2}}>{d.sila.silaN[i]}</p>}</div>)}</div></>}
+  {d.evening&&<><p className="st">Evening</p><div className="card"><p style={{fontSize:"13px",color:"#4a3a1a",lineHeight:1.8}}><strong>Abhijjhā:</strong> {d.evening.abh?"arose":"clear"}{d.evening.abhN&&<><br/><span style={{color:"#8a7a5a",fontStyle:"italic"}}>{d.evening.abhN}</span></>}<br/><strong>Byāpāda:</strong> {d.evening.bya?"arose":"clear"}{d.evening.byaN&&<><br/><span style={{color:"#8a7a5a",fontStyle:"italic"}}>{d.evening.byaN}</span></>}{d.evening.pullN&&<><br/><strong>What pulled:</strong> <span style={{color:"#8a7a5a",fontStyle:"italic"}}>{d.evening.pullN}</span></>}{d.evening.evN&&<><br/><strong>Reflection:</strong> <span style={{color:"#8a7a5a",fontStyle:"italic"}}>{d.evening.evN}</span></>}</p></div></>}
+  {d.sessions?.breath?.length>0&&<><p className="st">Breath sessions</p>{d.sessions.breath.map((s,i)=><div key={i} className="card" style={{padding:"8px 10px",marginBottom:5}}><p style={{fontSize:"13px",color:"#4a3a1a"}}>{s.durationMins} min{s.intention?` — ${s.intention}`:""}</p>{s.notes&&<p style={{fontSize:"12px",color:"#8a7a5a",fontStyle:"italic",marginTop:2}}>{s.notes}</p>}</div>)}</>}
+  {d.sessions?.practice?.length>0&&<><p className="st">Guided practice</p>{d.sessions.practice.map((s,i)=><div key={i} className="card" style={{padding:"8px 10px",marginBottom:5}}><p style={{fontSize:"13px",color:"#4a3a1a"}}>{s.practiceName}{s.durationMins>0?` — ${s.durationMins} min`:""}</p></div>)}</>}
+  <button className="btn sm" style={{marginTop:8}} onClick={()=>setMv("log")}>← Back to calendar</button>
+</>);})()}
       </div></div>}
     </div>
   </>);
