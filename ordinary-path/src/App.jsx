@@ -31,55 +31,107 @@ const SILA5 = [
 ];
 
 const SCENARIOS = [
-  {text:"Your morning tea has gone cold before you could drink it.",tag:"anicca"},
-  {text:"Someone at work received praise you expected for yourself.",tag:"abhijja"},
-  {text:"You are waiting in a long queue and it is not moving.",tag:"dukkha"},
-  {text:"A family member says something that irritates you deeply.",tag:"vyapada"},
-  {text:"You mindlessly opened your phone and lost 20 minutes.",tag:"dukkha"},
-  {text:"You notice your neighbour has a newer phone than yours.",tag:"abhijja"},
-  {text:"A task you worked hard on was quietly ignored.",tag:"vyapada"},
-  {text:"You feel restless but do not know why.",tag:"anatta"},
-  {text:"You eat your lunch quickly, barely tasting it.",tag:"dukkha"},
-  {text:"You feel a sudden wish that someone else would fail.",tag:"vyapada"},
-  {text:"You have important work to do but keep finding reasons to delay.",tag:"dukkha"},
-  {text:"You open YouTube for one video and two hours pass.",tag:"dukkha"},
-  {text:"A colleague got promoted and you feel it should have been you.",tag:"abhijja"},
-  {text:"Someone cancels plans and you feel a flash of resentment.",tag:"vyapada"},
-  {text:"You scroll through someone's life on social media and feel quietly diminished.",tag:"abhijja"},
-  {text:"You said something harsh and cannot stop replaying it.",tag:"vyapada"},
-  {text:"You feel subtle pride when others seem to be doing worse than you.",tag:"abhijja"},
-  {text:"You avoid a difficult conversation by filling your evening with a film.",tag:"dukkha"},
-  {text:"Your body aches today and the mind is impatient with it.",tag:"anicca"},
-  {text:"You reach for your phone the moment silence arrives.",tag:"dukkha"},
+  {text:"Your morning tea has gone cold before you could drink it.",tag:"anicca",choices:[
+    {text:"I see the tea changed while I was elsewhere — this is the nature of things",type:"wise"},
+    {text:"I feel a flash of annoyance that it didn't wait for me",type:"reactive"},
+    {text:"I rush to reheat it, irritated at the interruption",type:"reactive"},
+  ]},
+  {text:"Someone at work received praise you expected for yourself.",tag:"abhijja",choices:[
+    {text:"I notice the comparing mind contract, and let the wanting be seen",type:"wise"},
+    {text:"I quietly resent them and replay why it should have been me",type:"reactive"},
+    {text:"I tell myself they didn't really deserve it",type:"reactive"},
+  ]},
+  {text:"You are waiting in a long queue and it is not moving.",tag:"dukkha",choices:[
+    {text:"I let the waiting be waiting, without demanding it be otherwise",type:"wise"},
+    {text:"I check my phone again and again to escape the gap",type:"reactive"},
+    {text:"I grow tense and rehearse a complaint",type:"reactive"},
+  ]},
+  {text:"A family member says something that irritates you deeply.",tag:"vyapada",choices:[
+    {text:"I feel the heat of ill-will arise and breathe before responding",type:"wise"},
+    {text:"I snap back before the feeling has even settled",type:"reactive"},
+    {text:"I go silent but rehearse the grievance inwardly",type:"reactive"},
+  ]},
+  {text:"You mindlessly opened your phone and lost 20 minutes.",tag:"dukkha",choices:[
+    {text:"I notice where the pull began, without scolding myself",type:"wise"},
+    {text:"I keep scrolling since the time is already gone",type:"reactive"},
+    {text:"I drop into self-criticism for wasting time",type:"reactive"},
+  ]},
+  {text:"You notice your neighbour has a newer phone than yours.",tag:"abhijja",choices:[
+    {text:"I watch covetousness arise and wish them well instead",type:"wise"},
+    {text:"I start thinking about how to get a newer one too",type:"reactive"},
+    {text:"I feel my own things suddenly seem shabby",type:"reactive"},
+  ]},
+  {text:"A task you worked hard on was quietly ignored.",tag:"vyapada",choices:[
+    {text:"I notice the sting of being unseen, and hold it gently",type:"wise"},
+    {text:"I withdraw and let resentment harden",type:"reactive"},
+    {text:"I look for a way to make my effort noticed",type:"reactive"},
+  ]},
+  {text:"You feel restless but do not know why.",tag:"anatta",choices:[
+    {text:"I ask quietly: who is the one who is restless?",type:"wise"},
+    {text:"I reach for something — food, phone, noise — to fill it",type:"reactive"},
+    {text:"I decide something must be wrong with me",type:"reactive"},
+  ]},
+  {text:"You eat your lunch quickly, barely tasting it.",tag:"dukkha",choices:[
+    {text:"I slow for one bite and actually taste it",type:"wise"},
+    {text:"I keep eating while watching something on a screen",type:"reactive"},
+    {text:"I finish fast to get back to being busy",type:"reactive"},
+  ]},
+  {text:"You feel a sudden wish that someone else would fail.",tag:"vyapada",choices:[
+    {text:"I see ill-will clearly and name it without acting on it",type:"wise"},
+    {text:"I let the thought run and quietly enjoy it",type:"reactive"},
+    {text:"I justify the wish by recalling their faults",type:"reactive"},
+  ]},
+  {text:"You have important work to do but keep finding reasons to delay.",tag:"dukkha",choices:[
+    {text:"I notice the avoidance and the discomfort beneath it",type:"wise"},
+    {text:"I open another distraction to put it off again",type:"reactive"},
+    {text:"I tell myself I'll do it later and feel the unease grow",type:"reactive"},
+  ]},
+  {text:"You open YouTube for one video and two hours pass.",tag:"dukkha",choices:[
+    {text:"I notice the moment the next video began to pull me",type:"wise"},
+    {text:"I keep watching since I'm already in it",type:"reactive"},
+    {text:"I blame the app and feel powerless",type:"reactive"},
+  ]},
+  {text:"A colleague got promoted and you feel it should have been you.",tag:"abhijja",choices:[
+    {text:"I feel the contraction of comparison and breathe with it",type:"wise"},
+    {text:"I rehearse all the reasons I was more deserving",type:"reactive"},
+    {text:"I let the day sour around the thought",type:"reactive"},
+  ]},
+  {text:"Someone cancels plans and you feel a flash of resentment.",tag:"vyapada",choices:[
+    {text:"I notice resentment arise and let it pass without feeding it",type:"wise"},
+    {text:"I reply with a cold, clipped message",type:"reactive"},
+    {text:"I decide they don't value me and withdraw",type:"reactive"},
+  ]},
+  {text:"You scroll through someone's life on social media and feel quietly diminished.",tag:"abhijja",choices:[
+    {text:"I see the comparing mind at work and set the phone down",type:"wise"},
+    {text:"I keep scrolling and feel worse with each post",type:"reactive"},
+    {text:"I start curating how my own life looks to others",type:"reactive"},
+  ]},
+  {text:"You said something harsh and cannot stop replaying it.",tag:"vyapada",choices:[
+    {text:"I acknowledge the harm, resolve to repair it, and let the loop ease",type:"wise"},
+    {text:"I replay it again and again, sinking into remorse",type:"reactive"},
+    {text:"I justify it by blaming what they said first",type:"reactive"},
+  ]},
+  {text:"You feel subtle pride when others seem to be doing worse than you.",tag:"abhijja",choices:[
+    {text:"I notice the pride and the comparing beneath it",type:"wise"},
+    {text:"I quietly enjoy feeling ahead",type:"reactive"},
+    {text:"I look for more evidence that I'm doing better",type:"reactive"},
+  ]},
+  {text:"You avoid a difficult conversation by filling your evening with a film.",tag:"dukkha",choices:[
+    {text:"I notice what I'm avoiding and feel the unease honestly",type:"wise"},
+    {text:"I queue up another film to keep it at bay",type:"reactive"},
+    {text:"I tell myself there's nothing to discuss",type:"reactive"},
+  ]},
+  {text:"Your body aches today and the mind is impatient with it.",tag:"anicca",choices:[
+    {text:"I meet the ache as a changing sensation, not an enemy",type:"wise"},
+    {text:"I grow frustrated that the body won't cooperate",type:"reactive"},
+    {text:"I push through, ignoring what the body is saying",type:"reactive"},
+  ]},
+  {text:"You reach for your phone the moment silence arrives.",tag:"dukkha",choices:[
+    {text:"I pause, and let the silence be, just for a breath",type:"wise"},
+    {text:"I unlock it before I've even noticed the reach",type:"reactive"},
+    {text:"I feel uneasy in the quiet and fill it quickly",type:"reactive"},
+  ]},
 ];
-
-const CHOICES = {
-  abhijja:[
-    {text:"I notice the wanting and feel its tightness without acting on it",type:"wise"},
-    {text:"I compare myself and feel deflated",type:"reactive"},
-    {text:"I tell myself I deserve it more",type:"reactive"},
-  ],
-  vyapada:[
-    {text:"I notice the heat of ill-will and breathe into it",type:"wise"},
-    {text:"I replay the irritation in my mind",type:"reactive"},
-    {text:"I wish something bad for them",type:"reactive"},
-  ],
-  anicca:[
-    {text:"I see that this too has changed — that is its nature",type:"wise"},
-    {text:"I feel annoyed that things did not stay as I wanted",type:"reactive"},
-    {text:"I try to fix it immediately out of agitation",type:"reactive"},
-  ],
-  dukkha:[
-    {text:"I sit with the discomfort without demanding it end",type:"wise"},
-    {text:"I distract myself immediately",type:"reactive"},
-    {text:"I complain inwardly and resist",type:"reactive"},
-  ],
-  anatta:[
-    {text:"I ask: who exactly is the one feeling this?",type:"wise"},
-    {text:"I try to fill the feeling with activity",type:"reactive"},
-    {text:"I feel something must be wrong with me",type:"reactive"},
-  ],
-};
 
 const MN20 = [
   {name:"1. Replace the thought",inst:"Bring a wholesome object to mind. Let it displace the unwholesome thought."},
@@ -108,10 +160,23 @@ const INSIGHTS = [
   {quote:"Yo ca vassasataṁ jīve — Better one day lived with wisdom than a hundred years without it.",sutta:"Dhp 111",contemplation:"Paññā",seed:"A long life is not the goal. A wakeful life is."},
 ];
 
+const VEDANA_MOMENTS = [
+  {moment:"The first sip of warm tea on a cold morning.",tone:"pleasant",pull:"The mind reaches: 'again, more, keep this.' Craving (taṇhā) is born right here, from a pleasant tone.",rest:"Pleasant is simply pleasant. It need not be seized. Let it arise and pass, unowned."},
+  {moment:"A sharp, unexpected noise from the street.",tone:"unpleasant",pull:"The mind recoils: 'make it stop.' Aversion (paṭigha) is born here, from an unpleasant tone.",rest:"Unpleasant is simply unpleasant. The second arrow — resistance — need not be fired."},
+  {moment:"Waiting at a red light with nothing to do.",tone:"neutral",pull:"The mind slides toward boredom and reaches for the phone. Delusion (moha) hides in the neutral.",rest:"Neutral is the hardest to see. Rest in it, and the compulsion to fill it weakens."},
+  {moment:"A message notification lights up your screen.",tone:"pleasant",pull:"Anticipation pulls forward — 'who, what, more.' The reaching happens before you choose it.",rest:"See the pull itself as just another arising. You can let it glow and not grasp."},
+  {moment:"A dull ache settles into your lower back.",tone:"unpleasant",pull:"The mind tightens around it: 'this shouldn't be here.' Tightening multiplies the ache.",rest:"The sensation is one thing; the resistance is another. Soften, and meet bare sensation."},
+  {moment:"The hum of the refrigerator you usually never notice.",tone:"neutral",pull:"The mind has nothing to grab, so it drifts elsewhere, half-asleep.",rest:"Even the neutral can be known clearly. Knowing it is mindfulness itself."},
+  {moment:"Someone smiles warmly at you in passing.",tone:"pleasant",pull:"The mind wants to hold it, replay it, make it mean something about 'me.'",rest:"A pleasant contact, complete in itself. No need to build a self around it."},
+  {moment:"You remember an awkward thing you said yesterday.",tone:"unpleasant",pull:"The mind loops, replays, adds 'I always...' Proliferation (papañca) takes over.",rest:"A memory arose with an unpleasant tone. That is all. The looping is optional."},
+  {moment:"You finish a routine task and pause before the next.",tone:"neutral",pull:"The gap feels uncomfortable; the mind hunts for the next stimulation.",rest:"The pause is not empty — it is space. Rest there for one breath before moving."},
+  {moment:"A craving for something sweet arises after lunch.",tone:"pleasant",pull:"The image of the sweet pulls the body toward it before the mind has decided.",rest:"Watch craving as a visitor, not a command. It rises, peaks, and passes on its own."},
+];
+
 function playGong(){try{const c=new(window.AudioContext||window.webkitAudioContext)();[[220,.6,4],[440,.2,3]].forEach(([f,g,d])=>{const o=c.createOscillator(),gn=c.createGain();o.frequency.value=f;o.type="sine";gn.gain.setValueAtTime(g,c.currentTime);gn.gain.exponentialRampToValueAtTime(.001,c.currentTime+d);o.connect(gn);gn.connect(c.destination);o.start();o.stop(c.currentTime+d);});}catch(e){}}
 function playBowl(){try{const c=new(window.AudioContext||window.webkitAudioContext)();[396,528,639].forEach((f,i)=>{const o=c.createOscillator(),g=c.createGain();o.frequency.value=f;o.type="sine";g.gain.setValueAtTime(0,c.currentTime);g.gain.linearRampToValueAtTime(.15-i*.03,c.currentTime+.3);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+8);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+8);});}catch(e){}}
 
-const todayKey=()=>new Date().toISOString().split("T")[0];
+const todayKey=()=>{const d=new Date();d.setHours(d.getHours()-3);const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),day=String(d.getDate()).padStart(2,"0");return `${y}-${m}-${day}`;};
 
 async function saveSection(sec,data){
   try{localStorage.setItem(`log:${todayKey()}:${sec}`,JSON.stringify({...data,date:todayKey()}));}catch(e){}
@@ -191,10 +256,13 @@ const REPO_TITLES={
   jjvm:"Jāti Jarā Vyādhi Maraṇa (AN 5.57)",
   mn13:"The Beauty That Fades — Releasing Attachment to Forms (MN 13)",
   bahiya:"From Contact to Liberation — Breaking the Cycle at its Root",
+  paticca:"Paṭicca-samuppāda — Dependent Origination in Daily Life",
+  silavanta:"Sīlavanta Sutta — 11 Contemplations of the 5 Aggregates",
+  mulapariyaya:"Mūlapariyāya Sutta — The Root of 'I' (MN 1)",
   carana:"15 Caraṇa Dhamma (MN 53)",
 };
 
-const TABS=[{id:"morning",label:"Morning"},{id:"journey",label:"Journey"},{id:"breath",label:"Breath"},{id:"sila",label:"Sīla"},{id:"evening",label:"Evening"},{id:"insight",label:"Insight"}];
+const TABS=[{id:"morning",label:"Morning"},{id:"journey",label:"Journey"},{id:"breath",label:"Breath"},{id:"satilog",label:"Sati Log"},{id:"evening",label:"Evening"},{id:"insight",label:"Insight"}];
 
 export default function App(){
   const [tab,setTab]=useState("morning");
@@ -217,6 +285,11 @@ export default function App(){
   const [scIdx,setScIdx]=useState(()=>Math.floor(Math.random()*SCENARIOS.length));
   const [choice,setChoice]=useState(null);
   const [ji,setJi]=useState("");
+  const [jMode,setJMode]=useState("scenario");
+  const [vIdx,setVIdx]=useState(()=>Math.floor(Math.random()*VEDANA_MOMENTS.length));
+  const [vGuess,setVGuess]=useState(null);
+  const [vSeen,setVSeen]=useState(0);
+  const [vRight,setVRight]=useState(0);
   const [loadJ,setLoadJ]=useState(false);
   const [mn20on,setMn20on]=useState(false);
   const [mn20pick,setMn20pick]=useState(null);
@@ -235,6 +308,9 @@ export default function App(){
   const [silaS,setSilaS]=useState(Array(5).fill(null));
   const [silaN,setSilaN]=useState(Array(5).fill(""));
 
+  const [satiLog,setSatiLog]=useState([]);
+  const [satiDraft,setSatiDraft]=useState("");
+
   const [abh,setAbh]=useState(false);
   const [abhN,setAbhN]=useState("");
   const [bya,setBya]=useState(false);
@@ -249,13 +325,15 @@ export default function App(){
 
   const todayIns=INSIGHTS[new Date().getDay()%INSIGHTS.length];
   const sc=SCENARIOS[scIdx];
-  const ch=(CHOICES[sc.tag]||CHOICES.dukkha);
+  const ch=sc.choices;
 
   useEffect(()=>{(async()=>{
     const m=await loadSection("morning");
     if(m){setIntention(m.intention||"");if(m.tasks)setTasks(m.tasks);}
     const s=await loadSection("sila");
     if(s){if(s.silaS)setSilaS(s.silaS);if(s.silaN)setSilaN(s.silaN);}
+    const sl=await loadSection("satilog");
+    if(sl&&sl.entries)setSatiLog(sl.entries);
     const e=await loadSection("evening");
     if(e){setAbh(!!e.abh);setAbhN(e.abhN||"");setBya(!!e.bya);setByaN(e.byaN||"");setPullN(e.pullN||"");setEvN(e.evN||"");}
   })();},[]);
@@ -302,8 +380,21 @@ export default function App(){
 
   function nextSc(){setScIdx(i=>(i+1)%SCENARIOS.length);setChoice(null);setJi("");setMn20on(false);setMn20pick(null);setMn20i("");setLoadJ(false);setLoadMN(false);}
 
+  function guessVedana(tone){
+    if(vGuess!==null)return;
+    setVGuess(tone);
+    setVSeen(s=>s+1);
+    if(tone===VEDANA_MOMENTS[vIdx].tone)setVRight(r=>r+1);
+    if(tone===VEDANA_MOMENTS[vIdx].tone)setStill(s=>Math.min(100,s+10));
+  }
+  function nextVedana(){
+    setVIdx(i=>{let n=i;while(n===i&&VEDANA_MOMENTS.length>1)n=Math.floor(Math.random()*VEDANA_MOMENTS.length);return n;});
+    setVGuess(null);
+  }
+
   async function doEvening(){
     setLoadEv(true);
+    await saveSection("sila",{silaS,silaN});
     await saveSection("evening",{abh,abhN,bya,byaN,pullN,evN,still});
     const t=await ai(`Evening for ${USER}. Note:"${evN}". ${abh?`Abhijjhā arose:"${abhN}".`:"Abhijjhā clear."} ${bya?`Byāpāda arose:"${byaN}".`:"Byāpāda clear."} Pull:"${pullN||"none"}". Sīla:${silaS.filter(s=>s==="k").length}/5. Stillness:${still}%. Warm compassionate evening reflection. End with one sutta line.`);
     setEvI(t);setLoadEv(false);setStreak(s=>s+1);
@@ -318,6 +409,19 @@ export default function App(){
 
   function saveMorning(){saveSection("morning",{intention,tasks});}
   function saveSila(){saveSection("sila",{silaS,silaN});}
+  function addSatiEntry(){
+    if(!satiDraft.trim())return;
+    const now=new Date();
+    const stamp=`${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")}`;
+    const next=[...satiLog,{time:stamp,text:satiDraft.trim()}];
+    setSatiLog(next);setSatiDraft("");
+    saveSection("satilog",{entries:next});
+  }
+  function deleteSatiEntry(idx){
+    const next=satiLog.filter((_,i)=>i!==idx);
+    setSatiLog(next);
+    saveSection("satilog",{entries:next});
+  }
   const fmt=s=>`${String(Math.floor(s/60)).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`;
   const bPct=breathTot>0?((breathTot-breathSec)/breathTot)*100:0;
 
@@ -363,6 +467,27 @@ export default function App(){
           </div>}
 
           {tab==="journey"&&<div>
+            <div style={{display:"flex",gap:6,marginBottom:12}}>
+              <button className="btn sm" style={{textAlign:"center",background:jMode==="scenario"?"#f5e9c8":"none"}} onClick={()=>setJMode("scenario")}>Scenarios</button>
+              <button className="btn sm" style={{textAlign:"center",background:jMode==="vedana"?"#f5e9c8":"none"}} onClick={()=>setJMode("vedana")}>Vedanā Sorter</button>
+            </div>
+            {jMode==="vedana"&&<div>
+              <p className="st">Vedanā Sorter — catch the feeling-tone</p>
+              <p style={{fontSize:"13px",color:"#8a7a5a",fontStyle:"italic",marginBottom:10,lineHeight:1.65}}>Before craving, before "I" — there is only a tone. Sort each moment by its bare feeling-tone, then watch what tends to follow.</p>
+              <div className="card"><p style={{fontSize:"15px",color:"#4a3a1a",lineHeight:1.65,fontStyle:"italic"}}>{VEDANA_MOMENTS[vIdx].moment}</p></div>
+              {vGuess===null
+                ?<><p style={{fontSize:"13px",color:"#8a7a5a",marginBottom:8}}>What is the bare feeling-tone?</p>
+                  <button className="btn wise" onClick={()=>guessVedana("pleasant")}>Pleasant — sukha</button>
+                  <button className="btn" onClick={()=>guessVedana("neutral")}>Neutral — adukkhamasukha</button>
+                  <button className="btn rx" onClick={()=>guessVedana("unpleasant")}>Unpleasant — dukkha</button></>
+                :<><div className="ibox" style={{borderColor:vGuess===VEDANA_MOMENTS[vIdx].tone?"#7a9a5a":"#c4906a"}}>
+                    <strong>{vGuess===VEDANA_MOMENTS[vIdx].tone?"Seen clearly.":"Look again."}</strong> The tone here is <strong>{VEDANA_MOMENTS[vIdx].tone}</strong>.{"\n\n"}<strong>What tends to follow:</strong> {VEDANA_MOMENTS[vIdx].pull}{"\n\n"}<strong>The gap:</strong> {VEDANA_MOMENTS[vIdx].rest}
+                  </div>
+                  <p style={{fontSize:"12px",color:"#9a7d3a",marginTop:6,marginBottom:8}}>Seen clearly: {vRight} of {vSeen}</p>
+                  <button className="btn sm" onClick={nextVedana}>Next moment ›</button></>}
+              <p style={{fontSize:"12px",color:"#9a7d3a",fontStyle:"italic",textAlign:"center",marginTop:14,lineHeight:1.6}}>"Vedanā paccayā taṇhā" — from feeling, craving arises.<br/>See the tone, and the chain can open.</p>
+            </div>}
+            {jMode==="scenario"&&<div>
             <p className="st">Today's scenario</p>
             <div className="card"><p style={{fontSize:"15px",color:"#4a3a1a",lineHeight:1.65,fontStyle:"italic"}}>{sc.text}</p><span className="pill">{sc.tag}</span></div>
             {choice===null&&<><p style={{fontSize:"13px",color:"#8a7a5a",marginBottom:8}}>How do you meet this moment?</p>{ch.map((c,i)=><button key={i} className={`btn ${c.type==="wise"?"wise":"rx"}`} onClick={()=>pickChoice(c,i)}>{c.text}</button>)}</>}
@@ -378,6 +503,7 @@ export default function App(){
             {loadMN&&<p style={{color:"#9a7d3a",fontSize:"13px",fontStyle:"italic",padding:"7px 0"}}>Applying the method...</p>}
             {mn20i&&<div className="ibox" style={{borderColor:"#7a9a5a"}}>{mn20i}</div>}
             {ji&&<><p style={{fontSize:"13px",color:"#9a7d3a",marginTop:10}}>Stillness cultivated</p><div className="bwrap"><div className="bar" style={{width:`${still}%`}}/></div><p style={{fontSize:"12px",color:"#9a7d3a",marginBottom:8}}>{still}% present</p><button className="btn sm" onClick={nextSc}>Next scenario ›</button></>}
+            </div>}
           </div>}
 
           {tab==="breath"&&<div>
@@ -397,7 +523,23 @@ export default function App(){
             {breathDone&&<><p className="st">Session note</p><textarea className="ta" rows={2} placeholder="What did you observe?" value={breathNote} onChange={e=>setBreathNote(e.target.value)}/><div className="ibox" style={{marginTop:6}}>Sādhu. {set.breathMins} minutes of ānāpānasati. This is not a small thing.</div></>}
           </div>}
 
-          {tab==="sila"&&<div>
+         {tab==="satilog"&&<div>
+            <p className="st">Sati Log — what arose this hour</p>
+            <p style={{fontSize:"13px",color:"#8a7a5a",fontStyle:"italic",marginBottom:10,lineHeight:1.65}}>Pause through the day. Note what arose, what pulled you, what sīla was touched.</p>
+            <textarea className="ta" rows={3} placeholder="What arose? What pulled the mind? Which precept was near?" value={satiDraft} onChange={e=>setSatiDraft(e.target.value)}/>
+            <button className="btn pri sm" style={{marginTop:7}} onClick={addSatiEntry}>＋ Add entry</button>
+            <div style={{marginTop:14,background:"#fffdf5",border:"1px solid #e0c97a",borderRadius:10,padding:"4px 14px",backgroundImage:"repeating-linear-gradient(#fffdf5,#fffdf5 31px,#ece0b8 32px)",lineHeight:"32px",minHeight:128}}>
+              {satiLog.length===0&&<p style={{fontSize:"13px",color:"#b8a06a",fontStyle:"italic",lineHeight:"32px"}}>The page is empty. The first pause begins it.</p>}
+              {satiLog.map((e,i)=><div key={i} style={{display:"flex",alignItems:"flex-start",gap:8,borderBottom:"none"}}>
+                <span style={{fontSize:"12px",color:"#b8860b",fontWeight:500,flexShrink:0,fontVariantNumeric:"tabular-nums",lineHeight:"32px"}}>{e.time}</span>
+                <span style={{fontSize:"13px",color:"#4a3a1a",flex:1,lineHeight:"32px"}}>{e.text}</span>
+                <button className="ib" style={{fontSize:"13px",color:"#c4906a",lineHeight:"32px",padding:0}} onClick={()=>deleteSatiEntry(i)}>✕</button>
+              </div>)}
+            </div>
+            <p style={{fontSize:"12px",color:"#9a7d3a",fontStyle:"italic",textAlign:"center",marginTop:12,lineHeight:1.6}}>"Sato sampajāno" — mindful and clearly knowing.<br/>Set hourly reminders in your calendar (see menu).</p>
+          </div>}
+
+          {tab==="evening"&&<div>
             <p className="st">Pañca Sīla — today's honest log</p>
             <p style={{fontSize:"13px",color:"#8a7a5a",fontStyle:"italic",marginBottom:10,lineHeight:1.65}}>"Aṇumattesu vajjesu bhayadassāvī" — seeing danger in the slightest fault.</p>
             {SILA5.map((s,i)=><div key={i} className="srow">
@@ -411,15 +553,12 @@ export default function App(){
                 {silaS[i]==="m"&&<textarea className="ta" style={{marginTop:6,minHeight:60}} rows={3} placeholder={s.prompt} value={silaN[i]} onChange={e=>setSilaN(n=>{const nn=[...n];nn[i]=e.target.value;return nn;})} onBlur={saveSila}/>}
               </div>
             </div>)}
-            <div style={{display:"flex",gap:10,marginTop:12,justifyContent:"center"}}>
+            <div style={{display:"flex",gap:10,marginTop:12,marginBottom:4,justifyContent:"center"}}>
               {[{v:silaS.filter(s=>s==="k").length,l:"Kept",c:"#4a6a2a"},{v:silaS.filter(s=>s==="m").length,l:"Missed",c:"#8a4a2a"},{v:5-silaS.filter(s=>s==="k").length-silaS.filter(s=>s==="m").length,l:"Unlogged",c:"#9a7d3a"}].map(({v,l,c})=>(
                 <div key={l} style={{textAlign:"center"}}><p style={{fontSize:"22px",color:c,fontWeight:500}}>{v}</p><p style={{fontSize:"11px",color:"#8a7a5a"}}>{l}</p></div>
               ))}
             </div>
-            <button className="btn pri sm" style={{marginTop:12}} onClick={()=>{saveSila();setTab("evening");}}>Move to evening reflection ›</button>
-          </div>}
-
-          {tab==="evening"&&<div>
+            <hr className="div"/>
             <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10}}>
               <span style={{fontSize:"13px",color:"#8a7a5a",fontStyle:"italic"}}>Close with the chant:</span>
               <button className="btn lnk" onClick={()=>{setShowMenu(true);setMv("chant");}}>🪷 Open daily chant</button>
