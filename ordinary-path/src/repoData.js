@@ -768,7 +768,117 @@ mn13: {
         instruction: "For the final minutes, release any specific technique.\n\nSimply sit and receive — all sense doors open, nothing excluded, nothing grasped.\n\nSounds arise and pass. Sensations arise and pass. Thoughts arise and pass.\n\nIn the seen: only the seen.\nIn the heard: only the heard.\nIn the sensed: only the sensed.\nIn the cognized: only the cognized.\n\nYou are not 'with that.' You are not 'in that.'\n\nNeither here, nor there, nor in between.\n\nJust this — open, receiving, not adding.\n\nRest here for as long as the practice allows.",
       },
     ],
-    link: "https://depth-of-dhamma.net/?s=bahiya",
+   link: "https://depth-of-dhamma.net/?s=bahiya",
+  },
+
+  paticca: {
+    sutta: "SN 12.1, SN 12.2",
+    teaching: `Paṭicca-samuppāda — dependent origination — is not a cosmology to be believed. It is a description of how suffering is assembled, link by link, in ordinary moments — and therefore where it can be taken apart. The Buddha called it profound and difficult to see, yet its operation can be watched directly in a single irritation, a single craving, a single contraction of the mind.\n\nThe twelve links (nidāna): (1) avijjā — ignorance, not seeing things as they are; (2) saṅkhārā — the volitional formations conditioned by that ignorance; (3) viññāṇa — consciousness; (4) nāma-rūpa — name-and-form, the mental and physical; (5) saḷāyatana — the six sense bases; (6) phassa — contact, the meeting of sense, object, and consciousness; (7) vedanā — feeling tone, pleasant, unpleasant, or neutral; (8) taṇhā — craving; (9) upādāna — clinging; (10) bhava — becoming; (11) jāti — birth; (12) jarā-maraṇa — ageing and death, with sorrow, lamentation, pain, grief, and despair.\n\nFor daily practice, the most workable stretch of the chain is the middle: phassa → vedanā → taṇhā → upādāna. Something is seen or heard (contact). A feeling tone arises (pleasant or unpleasant). Craving follows — wanting more, or wanting it gone. Clinging hardens craving into a position, a story, an identity. This is where an ordinary moment becomes suffering — and it is precisely here, at the hinge between vedanā and taṇhā, that the chain can be interrupted.\n\nThe teaching is concrete, not abstract. This irritation right now did not appear from nowhere. There was contact — a word, a face, a memory. There was a feeling tone — unpleasant. There was craving — for it to stop. There was clinging — 'this should not be happening to me.' Seen this way, the irritation is not a solid thing that happened to you. It is an assembled process, and what is assembled can come apart.`,
+    steps: [
+      "Choose one real moment from today when the mind contracted — irritation, craving, anxiety, a sting of comparison. Hold that specific moment, not a general pattern.",
+      "Find the contact (phassa): what was the actual sense impression that started it? A specific word heard, an image seen, a physical sensation, a memory arising at the mind door. Name the bare contact, before any story.",
+      "Find the feeling tone (vedanā): what was the bare affective quality at that contact — pleasant, unpleasant, or neutral? Notice that this arose on its own, uninvited.",
+      "Find the craving (taṇhā): what did the mind want? More of it, less of it, none of it? Craving is the reaching or the pushing — name its direction.",
+      "Find the clinging (upādāna): how did craving harden into a position or identity? 'I am the kind of person who...', 'they always...', 'this must not be.' This is where the moment became heavy.",
+      "See the whole sequence as conditioned, not personal: each link arose because the one before it arose. Now ask — at which link could attention have entered and loosened the chain? Usually it is at vedanā, before craving took hold. This seeing is the practice.",
+    ],
+    guided: [
+      {
+        title: "Choose the moment",
+        instruction: "Settle into your posture. Take three natural breaths.\n\nBring to mind one specific moment from today when the mind contracted — irritation, wanting, anxiety, comparison, restlessness.\n\nNot a general pattern. One actual moment, with a time and a place.\n\nHold it in the mind's eye as if pausing a film on a single frame.",
+      },
+      {
+        title: "Find the contact",
+        instruction: "Rewind to just before the difficulty arose.\n\nWhat was the contact (phassa)?\n\nA word that was heard. A face that was seen. A sensation in the body. A memory or thought appearing at the mind door.\n\nName the bare contact — only what actually met a sense door, before any interpretation.\n\n'There was a sound.' 'There was a sight.' 'A thought arose.'",
+      },
+      {
+        title: "Find the feeling tone",
+        instruction: "At that moment of contact, what was the vedanā?\n\nNot the emotion, not the story — the bare tone.\n\nPleasant? Unpleasant? Neutral?\n\nNotice: this feeling tone arose on its own. It was not chosen. It came with the contact, uninvited.\n\nThis is the hinge of the entire chain. Rest here for a few breaths and simply see it.",
+      },
+      {
+        title: "Find the craving and clinging",
+        instruction: "After the feeling tone, what did the mind do?\n\nCraving (taṇhā): did it reach toward, wanting more? Or push away, wanting it gone?\n\nClinging (upādāna): did the craving harden into a story, a position, an identity? 'This shouldn't happen.' 'I always...' 'They never...'\n\nWatch how a bare feeling tone became, step by step, a heavy state of suffering.\n\nNo blame. Only seeing the assembly.",
+      },
+      {
+        title: "See where the chain could open",
+        instruction: "Now see the whole sequence laid out:\n\nContact → feeling tone → craving → clinging.\n\nEach link arose because the one before arose. None of it was a solid 'thing that happened to you.' It was a process, assembled in moments.\n\nAsk: where could awareness have entered?\n\nMost often, the opening is at the feeling tone — knowing 'this is unpleasant' clearly, before craving takes hold.\n\nThis is not theory. The next time this contact arises, the gap you have just seen will be a little more available.\n\nTake three breaths and return.",
+      },
+    ],
+    link: "https://depth-of-dhamma.net/?s=dependent+origination",
+  },
+
+  silavanta: {
+    sutta: "SN 22.122 (Sīlavanta Sutta)",
+    teaching: `In the Sīlavanta Sutta (SN 22.122), the venerable Sāriputta is asked what a virtuous monk should attend to wisely. His answer: the five aggregates of clinging (pañcupādānakkhandhā) — and he gives eleven ways to contemplate each one. The same eleven modes apply whether one is a beginner in virtue, a stream-enterer, or further along; only the fruit differs. This makes the sutta a complete, repeatable framework, not a one-time exercise.\n\nThe five aggregates are: rūpa (form, the body and materiality), vedanā (feeling tones), saññā (perception and recognition), saṅkhārā (mental formations — intentions, reactions, habits), and viññāṇa (consciousness, the bare knowing at each sense door).\n\nThe eleven contemplations, applied to each aggregate: as (1) impermanent (anicca), (2) suffering / unsatisfactory (dukkha), (3) a disease, (4) a boil, (5) a dart, (6) misery, (7) an affliction, (8) alien / other (parato), (9) disintegrating, (10) empty (suñña), and (11) not-self (anattā). These are not eleven philosophical claims to accept. They are eleven angles of vision — eleven ways of turning an aggregate in the light until the grasping that holds it as 'me' or 'mine' loosens.\n\nThe genius of the eleven is that they meet different temperaments and different moments. On a day of physical pleasure, 'impermanent' may cut through. On a day of pain, 'a dart' or 'an affliction' names experience exactly. When the body is admired or clung to, 'a boil' restores proportion. When identity feels solid, 'alien' and 'empty' and 'not-self' do the deeper work. The practitioner learns to reach for whichever of the eleven the present moment requires.\n\nThis is not a sitting-only practice. It is a way of meeting the aggregates as they operate all day — the body moving (rūpa), the feeling tones rising and falling (vedanā), the constant labelling of experience (saññā), the reactions and intentions firing (saṅkhārā), the knowing at each sense door (viññāṇa). Throughout the day, when any aggregate is grasped, the eleven are available as a lens.`,
+    steps: [
+      "Learn the five aggregates by their daily-life face: rūpa = this body and its sensations; vedanā = the pleasant/unpleasant/neutral tone of each moment; saññā = the mind's automatic labelling and recognising; saṅkhārā = intentions, reactions, habits, the 'doing' of the mind; viññāṇa = the bare knowing at eye, ear, nose, tongue, body, mind.",
+      "Learn the eleven contemplations as angles, not doctrines: impermanent, suffering, a disease, a boil, a dart, misery, an affliction, alien, disintegrating, empty, not-self.",
+      "In daily life, when the body is grasped — vanity, fear of ageing, craving for comfort — apply the eleven to rūpa. 'This form is impermanent. It is alien — it does not obey me. It is not-self.' Use whichever angle bites.",
+      "When a feeling tone hooks the mind — chasing a pleasant one, fleeing an unpleasant one — apply the eleven to vedanā. 'This feeling is a dart. It is disintegrating even now. It is not mine to keep.'",
+      "When perception deceives — assuming, jumping to conclusions, fixing a person or situation as solid — apply the eleven to saññā. 'This recognising is empty, conditioned, not-self. It is not the thing itself.'",
+      "When reactions and habits fire — the surge of anger, the pull of a compulsion, the well-worn storyline — apply the eleven to saṅkhārā. 'These formations are alien, arising on their own. They are a boil, a misery. They are not-self.'",
+      "When you take the knowing itself to be 'me' — the watcher, the one behind the eyes — apply the eleven to viññāṇa. 'This consciousness arises with contact and passes. It is impermanent, empty, not-self.'",
+      "At day's end, review: which aggregate was most grasped today? Which of the eleven contemplations, if remembered in the moment, would have loosened it? This review trains the reflex of reaching for the right angle next time.",
+    ],
+    guided: [
+      {
+        title: "Establish the five aggregates",
+        instruction: "Settle into your posture. Take three natural breaths.\n\nThis practice walks the eleven contemplations through the five aggregates — not as ideas, but as a way of seeing experience.\n\nFirst, locate the five in this very moment:\n\nRūpa — the body sitting, breathing, weight and warmth.\nVedanā — the feeling tone right now: pleasant, unpleasant, neutral.\nSaññā — the mind recognising sounds, sensations, these words.\nSaṅkhārā — the subtle intentions and reactions moving.\nViññāṇa — the bare knowing of all of it.\n\nKnow that all five are present.",
+      },
+      {
+        title: "Rūpa through the eleven",
+        instruction: "Rest attention on the body — rūpa.\n\nNow turn it slowly in the light of the eleven:\n\nImpermanent — it is changing with every breath.\nSuffering — it carries ache, fatigue, unease.\nA disease, a boil, a dart — it is a site of vulnerability, not pure delight.\nMisery, an affliction — it must be fed, cleaned, protected, endlessly.\nAlien — it does not obey: it ages, sickens, tires against your wishes.\nDisintegrating — it is dissolving toward its end even now.\nEmpty — no owner is found inside it.\nNot-self — 'is this me? is this mine?' Look, and see.\n\nLet whichever angle bites most settle for a few breaths.",
+      },
+      {
+        title: "Vedanā and saññā through the eleven",
+        instruction: "Turn to vedanā — the feeling tone of this moment.\n\nImpermanent — it has already shifted since you noticed it.\nA dart — even pleasant tones carry the sting of not lasting.\nAlien — it arose uninvited, from contact, not from you.\nEmpty, not-self — 'is this feeling me? is it mine?'\n\nNow saññā — the mind's labelling and recognising.\n\nIt fires automatically — you cannot stop recognising these words.\nIt is conditioned, often wrong, disintegrating, empty.\nAsk: 'is this recognising me? or a process running on its own?'\n\nHold each lightly. You are not arguing — you are looking.",
+      },
+      {
+        title: "Saṅkhārā and viññāṇa through the eleven",
+        instruction: "Turn to saṅkhārā — intentions, reactions, habits.\n\nWatch one arise: a leaning, a wanting, a resisting.\nIt came on its own momentum — alien.\nIt is a boil, a misery when it drives you.\nImpermanent, disintegrating, empty, not-self.\n'Do I author these? or do they arise from conditions?'\n\nNow viññāṇa — the knowing itself, often mistaken for 'the self behind the eyes.'\n\nIt arises with each contact and passes with it.\nIt is not continuous, not owned, not a fixed watcher.\nImpermanent, empty, not-self.\n\nLook directly at the knower. Is anyone there to be found?",
+      },
+      {
+        title: "Rest in the loosening",
+        instruction: "Release the systematic looking.\n\nAll five aggregates are present — form, feeling, perception, formations, consciousness — arising and passing, none of them obeying, none of them owned.\n\nThe eleven contemplations are not meant to make experience cold. They are meant to loosen the grip of 'me' and 'mine' that turns experience into suffering.\n\nFor the final breaths, simply rest in what remains when the grasping relaxes — experience, happening, unowned.\n\nCarry one of the eleven into the day. When an aggregate is grasped, remember: impermanent, alien, not-self.\n\nTake three breaths and return.",
+      },
+    ],
+    link: "https://depth-of-dhamma.net/?s=silavanta",
+  },
+
+  mulapariyaya: {
+    sutta: "MN 1 (Mūlapariyāya Sutta)",
+    teaching: `MN 1 — the Mūlapariyāya Sutta, the Root of All Things — is placed first in the Majjhima Nikāya for a reason. It cuts to the deepest root of suffering: not craving, not even ignorance in the abstract, but the precise mental act by which a 'self' is inserted into bare experience. It is said the monks who first heard it did not delight in it — it is that radical. It does not ask you to behave better. It asks you to see how 'I' is manufactured, moment by moment, and to stop manufacturing it.\n\nThe sutta's method is a fourfold analysis of how the mind relates to any object — earth, water, beings, the seen, the heard, even nibbāna itself. The untrained person (puthujjana) does four things. Taking earth as the example: he (1) perceives earth; then (2) conceives earth — saññā curdles into maññanā, a 'thinking-about' that inserts a standpoint; (3) conceives 'in earth', 'from earth', 'earth is mine'; and (4) delights in earth. In these four moves, a knower and a known, an 'I' and a 'mine', are fabricated out of what was simply a bare phenomenon. The Pali verb maññati — to conceive, to imagine, to deem — is the hinge. This conceiving is the root act.\n\nThe Buddha contrasts four levels of practitioner. The puthujjana conceives and delights — fully entangled. The sekha, the trainee, is directly knowing (abhijānāti) and is told 'he should not conceive' — the work is in progress. The arahant fully understands (abhiññāya) and does not conceive, because craving is destroyed. The Tathāgata likewise does not conceive, having known the ending of all delighting. The progression is a map: from conceiving, to seeing conceiving and ceasing to feed it, to its complete non-arising.\n\nThe practical heart is this: between bare perception and the sense of 'I', there is a step — maññanā, conceiving. It is fast, habitual, almost invisible. 'There is seeing' becomes, instantly, 'I see', 'I am the one seeing', 'this is mine', 'I like this'. MN 1 points to the gap before that step. To rest in bare perception — 'in the seen, only the seen', as the Buddha later tells Bāhiya — without the conceiving that builds a self around it, is the end of the root. This restructures not one meditation but every encounter with every object, every 'I', 'me', and 'mine' that arises through the day.`,
+    steps: [
+      "Learn the four moves the mind makes with any object, using a simple present example — say, a sound: (1) perceiving the sound; (2) conceiving it — adding 'I hear', a knower over against a known; (3) appropriating — 'my hearing', 'in me', 'mine'; (4) delighting — liking or disliking, leaning in or away.",
+      "Through the day, catch the second move — maññanā, conceiving — as it happens. Bare experience ('there is seeing', 'there is a feeling') is almost instantly converted into 'I see', 'I feel', 'this is happening to me'. The conversion is the root act. Simply notice it occurring.",
+      "Practise the reframing the sutta implies: where the mind says 'I am irritated', see 'there is irritation, arising'. Where it says 'my pain', see 'pain, present'. Where it says 'I am thinking', see 'thinking is happening'. This is not word-play — it is removing the inserted standpoint.",
+      "Watch especially the fourth move — delighting (nandi / abhinandati). The Buddha names delight as the root of suffering. When the mind leans into a pleasant object as 'mine to keep' or away from an unpleasant one as 'mine to be rid of', that delighting is the self being fed. See it, and the feeding can stop.",
+      "Apply this at the strongest place: the sense of being a fixed 'I' behind the eyes, a watcher who owns experience. Look directly for that watcher in bare experience. The sutta's claim is that it is conceived, not found. Each time you look and do not find it, the root loosens.",
+      "Do not turn this into a new identity ('I am one who does not conceive' — itself a conceiving). The instruction to the trainee is simply: directly know, and do not conceive. Keep returning to bare experience, before the standpoint is inserted. That returning is the whole practice.",
+    ],
+    guided: [
+      {
+        title: "Settle before the 'I' is built",
+        instruction: "Settle into your posture. Take three slow breaths.\n\nThis practice looks at the most ordinary and most overlooked event in the mind: the moment a bare experience becomes 'I' and 'mine'.\n\nFor now, simply sit. Let experience arrive — sounds, sensations, the breath.\n\nDo not yet do anything with it. Just let there be experiencing, before the story of an experiencer is added.\n\nRest here for several breaths.",
+      },
+      {
+        title: "Watch perception become 'I'",
+        instruction: "Choose one simple object — the sound in the room, or the breath at the nostrils.\n\nFirst, there is just this: a sound, a sensation. Bare perceiving.\n\nNow watch what the mind adds, almost instantly:\n\n'I hear it.' — a hearer appears.\n'I am breathing.' — a doer appears.\n'My breath.' — ownership appears.\n'I like this / I want it to stop.' — delight or aversion appears.\n\nWatch these additions arrive. This adding is maññanā — conceiving.\n\nYou are not stopping it yet. You are seeing it happen. That seeing is already new.",
+      },
+      {
+        title: "Return to the bare experience",
+        instruction: "Now, gently, practise the return.\n\nEach time the mind says 'I hear', soften it to: 'there is hearing.'\n'I feel this' becomes 'there is feeling.'\n'My breath' becomes 'breathing, happening.'\n'I am thinking' becomes 'thinking is occurring.'\n\nYou are not suppressing the experience. The sound is still heard, the breath still felt. You are only removing the inserted standpoint — the 'I' placed over against it.\n\nNotice what experience is like when the owner is not added. Lighter. More open. Unclaimed.\n\nRest in that for several breaths.",
+      },
+      {
+        title: "Look for the one who knows",
+        instruction: "Now turn toward the deepest assumption: that there is an 'I' behind all this — a watcher, a knower, the one to whom experience happens.\n\nLook directly for it.\n\nNot the thought 'I' — the actual watcher the thought points to.\n\nIn the hearing, is there a hearer, or only hearing?\nIn the seeing, a seer, or only seeing?\nIn the knowing, a knower standing behind it, or only knowing, arising and passing?\n\nDo not answer with a belief. Look. The sutta says: what you take as the self is conceived, not found.\n\nEach honest look that comes up empty is the root being seen through.",
+      },
+      {
+        title: "Rest without conceiving",
+        instruction: "Release the searching.\n\nLet experience simply happen — seen, heard, felt, known — with no one placed behind it and no one owning it.\n\nWhen conceiving arises again — and it will, within seconds — that is not failure. Notice it: 'conceiving.' Soften. Return to bare experience.\n\nThis is the practice of a lifetime, not a moment. The puthujjana conceives and delights. The trainee sees conceiving and does not feed it. That seeing, repeated, is the path MN 1 lays open.\n\nCarry this into the day: each time 'I', 'me', or 'mine' hardens around an experience, remember — there is a step before that, and it can be seen.\n\nTake three breaths. Return, unclaimed.",
+      },
+    ],
+    link: "https://depth-of-dhamma.net/?s=mulapariyaya",
   },
 
   carana: {
