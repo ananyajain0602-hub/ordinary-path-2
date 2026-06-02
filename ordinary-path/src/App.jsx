@@ -188,7 +188,7 @@ async function appendSession(type,data){
   try{const key=`sess:${todayKey()}:${type}`;let ex=[];try{const r=localStorage.getItem(key);if(r)ex=JSON.parse(r);}catch(e){}ex.push({...data,time:new Date().toISOString()});localStorage.setItem(key,JSON.stringify(ex));}catch(e){}
 }
 async function loadAllDays(){
-  try{const days={};for(let i=0;i<localStorage.length;i++){const key=localStorage.key(i);if(!key)continue;try{const p=key.split(":"),type=p[0],d=p[1],s=p[2];if(!days[d])days[d]={};if(type==="log")days[d][s]=JSON.parse(localStorage.getItem(key));if(type==="sess"){if(!days[d].sessions)days[d].sessions={};days[d].sessions[s]=JSON.parse(localStorage.getItem(key));}}catch(e){}}return days;}catch(e){return{};}
+  try{const days={};for(let i=0;i<localStorage.length;i++){const key=localStorage.key(i);if(!key)continue;try{const p=key.split(":"),type=p[0],d=p[1],s=p[2];if(!days[d])days[d]={};if(type==="log")days[d][s]=JSON.parse(localStorage.getItem(key));if(type==="sess"){if(!days[d].sessions)days[d].sessions={};days[d].sessions[s]=JSON.parse(localStorage.getItem(key));}if(type==="satilog"){days[d].satilog=JSON.parse(localStorage.getItem(key));}}catch(e){}}return days;}catch(e){return{};}
 }
 
 const CSS=`
@@ -276,7 +276,9 @@ export default function App(){
   const [gStep,setGStep]=useState(0);
   const [gStart,setGStart]=useState(null);
   const [calMo,setCalMo]=useState(new Date());
-  const [set,setSetting]=useState({showTasks:true,breathMins:20});
+  const [set,setSetting]=useState({showTasks:true,breathMins:20});   
+  const [ioText,setIoText]=useState("");   
+  const [ioMsg,setIoMsg]=useState("");
 
   const [intention,setIntention]=useState("");
   const [tasks,setTasks]=useState([{t:"",i:""},{t:"",i:""},{t:"",i:""}]);
@@ -409,6 +411,22 @@ export default function App(){
 
   function saveMorning(){saveSection("morning",{intention,tasks});}
   function saveSila(){saveSection("sila",{silaS,silaN});}
+  function exportLogs(){
+    try{
+      const o={};
+      for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&(k.startsWith("log:")||k.startsWith("sess:")||k.startsWith("satilog:")))o[k]=localStorage.getItem(k);}
+      const t=JSON.stringify(o);
+      setIoText(t);setIoMsg(`Exported ${Object.keys(o).length} entries. Select the text below, copy it, and save it somewhere safe.`);
+    }catch(e){setIoMsg("Export failed: "+e.message);}
+  }
+  function importLogs(){
+    try{
+      const o=JSON.parse(ioText);
+      let n=0;
+      for(const k in o){if(k.startsWith("log:")||k.startsWith("sess:")||k.startsWith("satilog:")){localStorage.setItem(k,o[k]);n++;}}
+      setIoMsg(`Imported ${n} entries. Close settings and reopen the app to see them.`);
+    }catch(e){setIoMsg("Import failed — the text may be incomplete or altered. ("+e.message+")");}
+  }
   function addSatiEntry(){
     if(!satiDraft.trim())return;
     const now=new Date();
@@ -628,25 +646,43 @@ export default function App(){
         <div style={{display:"flex",gap:7,flexWrap:"wrap",marginBottom:10}}>
           {[5,10,15,20,30,45].map(d=><button key={d} className="btn sm" style={{width:"auto",flex:"none",background:set.breathMins===d?"#f5e9c8":"none"}} onClick={()=>{setSetting(s=>({...s,breathMins:d}));setBreathSec(d*60);setBreathTot(d*60);}}>{d} min</button>)}
         </div>
-        <button className="btn pri" style={{marginTop:10}} onClick={()=>setShowSet(false)}>Save & close</button>
+        <p className="st">Backup — export & import logs</p>
+        <p style={{fontSize:"12px",color:"#8a7a5a",fontStyle:"italic",marginBottom:8,lineHeight:1.6}}>Export before re-adding the home screen icon. Keep the copied text somewhere safe (Notes, email to yourself). To restore, paste it back and tap Import.</p>
+        <div style={{display:"flex",gap:7,marginBottom:8}}>
+          <button className="btn sm" style={{textAlign:"center"}} onClick={exportLogs}>⬆ Export</button>
+          <button className="btn sm" style={{textAlign:"center"}} onClick={importLogs}>⬇ Import</button>
+        </div>
+        <textarea className="ta" rows={4} placeholder="Your exported backup appears here. To restore, paste a backup here and tap Import." value={ioText} onChange={e=>setIoText(e.target.value)}/>
+        {ioMsg&&<p style={{fontSize:"12px",color:"#b8860b",marginTop:6,lineHeight:1.6}}>{ioMsg}</p>}
+        <button className="btn pri" style={{marginTop:12}} onClick={()=>setShowSet(false)}>Save & close</button>
       </div></div>}
 
       {showMenu&&<div className="ov" onClick={closeMenu}><div className="mod" onClick={e=>e.stopPropagation()}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
           <div style={{display:"flex",alignItems:"center",gap:8}}>
             {mv!=="main"&&<button className="ib" style={{fontSize:"16px"}} onClick={()=>{if(mv==="guided"){setMv("repo_item");}else if(mv==="repo_item"){setMv("repo");}else if(mv==="logday"){setMv("log");}else setMv("main");}}>←</button>}
-            <p style={{fontSize:"15px",color:"#b8860b",fontWeight:500}}>{mv==="main"?"Menu":mv==="chant"?"Daily Chant":mv==="repo"?"Knowledge Repository":mv==="guided"?"Guided Practice":mv==="logday"?selDay?.key||"Log Entry":mv==="repo_item"&&repoId?REPO_TITLES[repoId]||REPO_DATA[repoId]?.title||"Teaching":"Practice Log"}</p>
+            <p style={{fontSize:"15px",color:"#b8860b",fontWeight:500}}>{mv==="main"?"Menu":mv==="chant"?"Daily Chant":mv==="repo"?"Knowledge Repository":mv==="guided"?"Guided Practice":mv==="satihist"?"Sati Log History":mv==="logday"?selDay?.key||"Log Entry":mv==="repo_item"&&repoId?REPO_TITLES[repoId]||REPO_DATA[repoId]?.title||"Teaching":"Practice Log"}</p>
           </div>
           <button className="ib" onClick={closeMenu}>✕</button>
         </div>
         {mv==="main"&&<>
           <button className="btn" onClick={()=>setMv("chant")}>🪷 Daily chant</button>
           <button className="btn" onClick={openLog}>📅 Practice log</button>
+          <button className="btn" onClick={async()=>{const dd=await loadAllDays();setAllDays(dd);setMv("satihist");}}>📝 Sati Log history</button>
           <button className="btn" onClick={()=>setMv("repo")}>📚 Knowledge repository</button>
         </>}
+        {mv==="satihist"&&<>
+          <p style={{fontSize:"12px",color:"#8a7a5a",fontStyle:"italic",marginBottom:10}}>Every pause you noted, most recent day first.</p>
+          {Object.keys(allDays).filter(k=>allDays[k]?.satilog?.entries?.length>0).sort().reverse().map(k=>(
+            <div key={k} style={{marginBottom:14}}>
+              <p style={{fontSize:"13px",color:"#b8860b",fontWeight:500,marginBottom:5}}>{k}</p>
+              <div className="card" style={{padding:"6px 12px"}}>{allDays[k].satilog.entries.map((e,i)=><div key={i} style={{display:"flex",gap:8,padding:"4px 0",borderBottom:i<allDays[k].satilog.entries.length-1?"1px solid #e8ddb8":"none"}}><span style={{fontSize:"12px",color:"#b8860b",fontWeight:500,flexShrink:0,fontVariantNumeric:"tabular-nums"}}>{e.time}</span><span style={{fontSize:"13px",color:"#4a3a1a",lineHeight:1.5}}>{e.text}</span></div>)}</div>
+            </div>
+          ))}
+          {Object.keys(allDays).filter(k=>allDays[k]?.satilog?.entries?.length>0).length===0&&<p style={{fontSize:"13px",color:"#b8a06a",fontStyle:"italic",textAlign:"center",padding:"20px 0"}}>No Sati Log entries yet. The first pause begins the record.</p>}
+        </>}
         {mv==="chant"&&<>
-          <p style={{fontSize:"12px",color:"#9a7d3a",textAlign:"center",marginBottom:8}}>Recite three times daily</p>
-          <div className="card"><p style={{fontSize:"14px",lineHeight:2.1,color:"#4a3a1a",fontStyle:"italic",textAlign:"center",padding:"8px 0"}}>{CHANT}</p></div>
+          <p style={{fontSize:"12px",color:"#9a7d3a",textAlign:"center",marginBottom:8}}>Recite three times daily</p>          <div className="card"><p style={{fontSize:"14px",lineHeight:2.1,color:"#4a3a1a",fontStyle:"italic",textAlign:"center",padding:"8px 0"}}>{CHANT}</p></div>
           <p className="st">Line by line</p>
           {CHANT_LINES.map(([p,e])=><div key={p} style={{padding:"7px 0",borderBottom:"1px solid #e8ddb8"}}><p style={{fontSize:"13px",color:"#4a3a1a",fontStyle:"italic"}}>{p}</p><p style={{fontSize:"12px",color:"#8a7a5a",marginTop:2}}>{e}</p></div>)}
           <button className="btn sm" style={{marginTop:10,textAlign:"center"}} onClick={playGong}>🔔 Sound gong</button>
@@ -685,8 +721,8 @@ export default function App(){
   {d.morning.tasks&&d.morning.tasks.filter(t=>t.t).length>0&&<><p className="st">Tasks</p>{d.morning.tasks.filter(t=>t.t).map((t,i)=><div key={i} style={{marginBottom:6}}><p style={{fontSize:"13px",color:"#4a3a1a"}}>{t.t}</p>{t.i&&<p style={{fontSize:"12px",color:"#8a7a5a",fontStyle:"italic"}}>{t.i}</p>}</div>)}</>}</>}
   {d.sila&&<><p className="st">Sīla</p><div className="card">{SILA5.map((s,i)=><div key={i} style={{marginBottom:5}}><span style={{fontSize:"12px",color:"#4a3a1a"}}>{s.pali.split("·")[0].trim()}: </span><span style={{fontSize:"12px",color:d.sila.silaS?.[i]==="k"?"#4a6a2a":d.sila.silaS?.[i]==="m"?"#c4604a":"#9a7d3a",fontWeight:500}}>{d.sila.silaS?.[i]==="k"?"kept":d.sila.silaS?.[i]==="m"?"missed":"unlogged"}</span>{d.sila.silaN?.[i]&&<p style={{fontSize:"12px",color:"#8a7a5a",fontStyle:"italic",marginTop:2}}>{d.sila.silaN[i]}</p>}</div>)}</div></>}
   {d.evening&&<><p className="st">Evening</p><div className="card"><p style={{fontSize:"13px",color:"#4a3a1a",lineHeight:1.8}}><strong>Abhijjhā:</strong> {d.evening.abh?"arose":"clear"}{d.evening.abhN&&<><br/><span style={{color:"#8a7a5a",fontStyle:"italic"}}>{d.evening.abhN}</span></>}<br/><strong>Byāpāda:</strong> {d.evening.bya?"arose":"clear"}{d.evening.byaN&&<><br/><span style={{color:"#8a7a5a",fontStyle:"italic"}}>{d.evening.byaN}</span></>}{d.evening.pullN&&<><br/><strong>What pulled:</strong> <span style={{color:"#8a7a5a",fontStyle:"italic"}}>{d.evening.pullN}</span></>}{d.evening.evN&&<><br/><strong>Reflection:</strong> <span style={{color:"#8a7a5a",fontStyle:"italic"}}>{d.evening.evN}</span></>}</p></div></>}
-  {d.sessions?.breath?.length>0&&<><p className="st">Breath sessions</p>{d.sessions.breath.map((s,i)=><div key={i} className="card" style={{padding:"8px 10px",marginBottom:5}}><p style={{fontSize:"13px",color:"#4a3a1a"}}>{s.durationMins} min{s.intention?` — ${s.intention}`:""}</p>{s.notes&&<p style={{fontSize:"12px",color:"#8a7a5a",fontStyle:"italic",marginTop:2}}>{s.notes}</p>}</div>)}</>}
-  {d.sessions?.practice?.length>0&&<><p className="st">Guided practice</p>{d.sessions.practice.map((s,i)=><div key={i} className="card" style={{padding:"8px 10px",marginBottom:5}}><p style={{fontSize:"13px",color:"#4a3a1a"}}>{s.practiceName}{s.durationMins>0?` — ${s.durationMins} min`:""}</p></div>)}</>}
+  {d.satilog?.entries?.length>0&&<><p className="st">Sati Log</p><div className="card" style={{padding:"6px 12px"}}>{d.satilog.entries.map((e,i)=><div key={i} style={{display:"flex",gap:8,padding:"4px 0",borderBottom:i<d.satilog.entries.length-1?"1px solid #e8ddb8":"none"}}><span style={{fontSize:"12px",color:"#b8860b",fontWeight:500,flexShrink:0,fontVariantNumeric:"tabular-nums"}}>{e.time}</span><span style={{fontSize:"13px",color:"#4a3a1a",lineHeight:1.5}}>{e.text}</span></div>)}</div></>}
+  {d.sessions?.breath?.length>0&&<><p className="st">Breath sessions</p>{d.sessions.breath.map((s,i)=><div key={i} className="card" style={{padding:"8px 10px",marginBottom:5}}><p style={{fontSize:"13px",color:"#4a3a1a"}}>{s.durationMins} min{s.intention?` — ${s.intention}`:""}</p>{s.notes&&<p style={{fontSize:"12px",color:"#8a7a5a",fontStyle:"italic",marginTop:2}}>{s.notes}</p>}</div>)}</>}  {d.sessions?.practice?.length>0&&<><p className="st">Guided practice</p>{d.sessions.practice.map((s,i)=><div key={i} className="card" style={{padding:"8px 10px",marginBottom:5}}><p style={{fontSize:"13px",color:"#4a3a1a"}}>{s.practiceName}{s.durationMins>0?` — ${s.durationMins} min`:""}</p></div>)}</>}
   <button className="btn sm" style={{marginTop:8}} onClick={()=>setMv("log")}>← Back to calendar</button>
 </>);})()}
       </div></div>}
